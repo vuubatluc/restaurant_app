@@ -32,9 +32,19 @@ Chào mừng đến với Restaurant Order Manager! Dưới đây là danh sách
 
 ## 🛠️ Scripts & Tools
 
-### Database Management
+### Application
 
-5. **`init_db.py`** - Khởi tạo database
+5. **`main.py`** - Chạy ứng dụng ⭐
+   ```bash
+   python main.py
+   ```
+   - **Tự động kiểm tra và khởi tạo database**
+   - Tạo database nếu chưa tồn tại
+   - Chạy ứng dụng
+
+### Database Management (Optional)
+
+6. **`init_db.py`** - Khởi tạo database thủ công
    ```bash
    python init_db.py
    ```
@@ -42,31 +52,6 @@ Chào mừng đến với Restaurant Order Manager! Dưới đây là danh sách
    - Tạo tables, triggers, procedures
    - Insert dữ liệu mẫu
    - ⚠️ Xóa database cũ nếu có
-
-6. **`check_db.py`** - Kiểm tra database
-   ```bash
-   python check_db.py
-   ```
-   - Verify database tồn tại
-   - Kiểm tra tables
-   - Đếm records
-   - Kiểm tra triggers/procedures
-
-7. **`test_db.py`** - Test database functions
-   ```bash
-   python test_db.py
-   ```
-   - Test query functions
-   - Test settings
-   - Verify dữ liệu mẫu
-   - Test money formatting
-
-### Application
-
-8. **`main.py`** - Chạy ứng dụng
-   ```bash
-   python main.py
-   ```
 
 ## 📁 Cấu trúc Project
 
@@ -96,7 +81,6 @@ restaurant_app/
 │   └── reports.py         # Reports
 │
 └── 📄 Other
-    ├── db.sql             # Raw SQL (reference)
     └── .gitignore         # Git ignore rules
 ```
 
@@ -109,31 +93,20 @@ pip install mysql-connector-python
 
 # 2. Edit config.py (set your MySQL password)
 
-# 3. Initialize database
-python init_db.py
-
-# 4. Run application
+# 3. Run application (auto-init database)
 python main.py
 ```
 
 ### Daily Development
 ```bash
-# Check database status
-python check_db.py
-
-# Run application
+# Just run the application
 python main.py
 ```
 
-### Reset Database
+### Reset Database (if needed)
 ```bash
 # This will DELETE all data!
 python init_db.py
-```
-
-### Test Database
-```bash
-python test_db.py
 ```
 
 ## 🆘 Cần giúp đỡ?

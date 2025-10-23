@@ -1,13 +1,10 @@
 # Sơ đồ phụ thuộc các module
 
 ```
-init_db.py (Database initialization)
+init_db.py (Manual database initialization)
   └── database.py (initialize_database, create_tables, create_triggers_and_procedures)
 
-check_db.py (Database verification)
-  └── config.py + mysql.connector
-
-main.py
+main.py (Auto-init database + run app)
   └── main_app.py (RestaurantApp)
        ├── config.py (DB_CONFIG, APP_TITLE, CURRENCY)
        ├── database.py (query_all, query_one, execute, money, settings)

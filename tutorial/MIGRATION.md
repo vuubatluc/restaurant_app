@@ -7,8 +7,8 @@
 ## Các file mới được tạo
 
 ### 1. `init_db.py` ⭐
-**Script khởi tạo database**
-- Chạy 1 lần để tạo database từ đầu
+**Script khởi tạo database thủ công**
+- Tạo database từ đầu
 - Xóa database cũ nếu tồn tại
 - Tạo tất cả tables, triggers, procedures
 - Insert dữ liệu mẫu
@@ -17,29 +17,17 @@
 python init_db.py
 ```
 
-### 2. `check_db.py` 🔍
-**Script kiểm tra database**
-- Kiểm tra database có tồn tại không
-- Kiểm tra tất cả tables đã được tạo
-- Đếm số lượng records
-- Kiểm tra triggers và procedures
+### 2. `main.py` - Tự động init database! 🎉
+**Ứng dụng chính với auto-init**
+- Tự động kiểm tra database
+- Tự động tạo database nếu chưa có
+- Chạy ứng dụng
 
 ```bash
-python check_db.py
+python main.py  # Chỉ cần chạy này!
 ```
 
-### 3. `test_db.py` 🧪
-**Script test các hàm database**
-- Test query_all(), query_one(), execute()
-- Test get_setting(), set_setting()
-- Test money() formatting
-- Verify dữ liệu mẫu
-
-```bash
-python test_db.py
-```
-
-### 4. `QUICKSTART.md` 📚
+### 3. `QUICKSTART.md` 📚
 **Hướng dẫn nhanh**
 - Setup từ đầu
 - Troubleshooting thường gặp
@@ -149,8 +137,7 @@ mysql -u root -p restaurant_app < backup.sql
 
 ### Nếu setup mới
 ```bash
-# Đơn giản chỉ cần
-python init_db.py
+# Đơn giản chỉ cần (database sẽ tự động được tạo)
 python main.py
 ```
 
@@ -170,15 +157,10 @@ python main.py
 
 ### Development
 ```bash
-python init_db.py    # Fresh start
-python test_db.py    # Verify
+python main.py       # Run app (auto-init database)
+# hoặc
+python init_db.py    # Fresh start (manual)
 python main.py       # Run app
-```
-
-### Testing
-```bash
-python check_db.py   # Quick check
-python test_db.py    # Full test
 ```
 
 ### Production

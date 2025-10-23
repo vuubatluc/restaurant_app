@@ -23,14 +23,17 @@ DB_PASSWORD = "YOUR_PASSWORD_HERE"  # ← Thay đổi đây
 DB_NAME = "restaurant_app"
 ```
 
-## Bước 3: Khởi tạo Database
+## Bước 3: Chạy ứng dụng
 
 ```bash
-python init_db.py
+python main.py
 ```
+
+**Ứng dụng sẽ tự động khởi tạo database!**
 
 Kết quả mong đợi:
 ```
+⚠️  Database 'restaurant_app' does not exist. Creating...
 ============================================================
 INITIALIZING RESTAURANT DATABASE
 ============================================================
@@ -52,16 +55,12 @@ INITIALIZING RESTAURANT DATABASE
 ============================================================
 ```
 
-## Bước 4: Kiểm tra (Optional)
+Sau đó ứng dụng sẽ tự động mở.
+
+**Khởi tạo thủ công (nếu cần):**
 
 ```bash
-python check_db.py
-```
-
-## Bước 5: Chạy ứng dụng
-
-```bash
-python main.py
+python init_db.py
 ```
 
 ## ⚠️ Lưu ý quan trọng
@@ -93,7 +92,8 @@ python main.py
 
 ### Lỗi: `Unknown database`
 ```bash
-# Chạy lại init_db.py
+# Không cần lo! main.py sẽ tự động tạo database
+# Hoặc chạy thủ công:
 python init_db.py
 ```
 

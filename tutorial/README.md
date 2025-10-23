@@ -88,22 +88,22 @@ DB_PASSWORD = "your_password"
 DB_NAME = "restaurant_app"
 ```
 
-### Bước 3: Khởi tạo database
-
-```bash
-python init_db.py
-```
-
-Script này sẽ:
-- Tạo database `restaurant_app`
-- Tạo tất cả các bảng
-- Tạo triggers và stored procedures
-- Insert dữ liệu mẫu (categories, tables, menu items)
-
-### Bước 4: Chạy ứng dụng
+### Bước 3: Chạy ứng dụng
 
 ```bash
 python main.py
+```
+
+**Ứng dụng sẽ tự động:**
+- ✅ Kiểm tra database có tồn tại không
+- ✅ Tạo database nếu chưa có
+- ✅ Tạo tất cả các bảng, triggers, procedures
+- ✅ Insert dữ liệu mẫu
+
+**Hoặc khởi tạo database thủ công:**
+
+```bash
+python init_db.py
 ```
 
 ## Yêu cầu
