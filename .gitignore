@@ -26,7 +26,6 @@ env/
 Thumbs.db
 
 # Application specific
-*.txt
 receipt_*.txt
 config_local.py
 
