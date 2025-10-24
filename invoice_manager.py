@@ -35,6 +35,9 @@ class InvoiceManager:
         ent_search = ttk.Entry(filters, width=22)
         ent_search.grid(row=0, column=7, padx=6)
 
+        btn_filter = ttk.Button(filters, text="🔍 Lọc")
+        btn_filter.grid(row=0, column=8, padx=6)
+
         # Table
         cols = ("id", "created_at", "table", "status", "subtotal", "tax", "service", "total", "note")
         tree = ttk.Treeview(win, columns=cols, show="headings", height=18)
@@ -160,6 +163,10 @@ class InvoiceManager:
         ttk.Button(actions, text="Hủy đơn", command=cancel_order).pack(side=LEFT, padx=4)
         ttk.Button(actions, text="Mở đơn vào giỏ (OPEN)", command=open_to_cart).pack(side=LEFT, padx=4)
         ttk.Button(actions, text="Xuất hóa đơn…", command=export_selected_paid).pack(side=RIGHT, padx=4)
+
+        # Bind filter button and Enter key to load function
+        btn_filter.config(command=load)
+        ent_search.bind("<Return>", lambda e: load())
 
         today = datetime.now().strftime("%Y-%m-%d")
         ent_from.insert(0, today)
