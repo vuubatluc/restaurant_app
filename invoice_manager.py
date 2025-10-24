@@ -13,7 +13,7 @@ class InvoiceManager:
     def open(parent, on_load_order_to_cart=None, on_export_receipt=None):
         win = Toplevel(parent)
         win.title("Quản lý hóa đơn")
-        win.geometry("960x580")
+        win.geometry("1200x580")
         win.transient(parent)
 
         # Filters
