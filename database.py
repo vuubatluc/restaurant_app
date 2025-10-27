@@ -408,12 +408,12 @@ def create_triggers_and_procedures():
         CREATE PROCEDURE sp_revenue_by_date(IN p_date DATE)
         BEGIN
           -- Totals row
-          SELECT DATE(created_at) AS ngay,
+          SELECT p_date AS ngay,
                  COUNT(*) AS so_don,
-                 SUM(subtotal) AS subtotal,
-                 SUM(tax) AS tax,
-                 SUM(service) AS service,
-                 SUM(total) AS total
+                 COALESCE(SUM(subtotal), 0) AS subtotal,
+                 COALESCE(SUM(tax), 0) AS tax,
+                 COALESCE(SUM(service), 0) AS service,
+                 COALESCE(SUM(total), 0) AS total
           FROM orders
           WHERE DATE(created_at)=p_date AND status='PAID';
 

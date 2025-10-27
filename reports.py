@@ -169,15 +169,15 @@ class ReportDaily:
                         # Fallback totals
                         tot = query_one(
                             """
-                            SELECT DATE(created_at) AS ngay,
+                            SELECT %s AS ngay,
                                    COUNT(*) AS so_don,
-                                   SUM(subtotal) AS subtotal,
-                                   SUM(tax) AS tax,
-                                   SUM(service) AS service,
-                                   SUM(total) AS total
+                                   COALESCE(SUM(subtotal), 0) AS subtotal,
+                                   COALESCE(SUM(tax), 0) AS tax,
+                                   COALESCE(SUM(service), 0) AS service,
+                                   COALESCE(SUM(total), 0) AS total
                             FROM orders
                             WHERE DATE(created_at)=%s AND status='PAID'
-                            """, (p_date,))
+                            """, (p_date, p_date))
                         if tot and any(tot):
                             ngay, so_don, subtotal, tax, service, total = tot
                             var_ngay.set(str(ngay))
@@ -219,9 +219,14 @@ class ReportDaily:
         grid.pack(fill=X)
         labels = [("Ngày:", var_ngay), ("Số đơn:", var_so_don), ("Tạm tính:", var_sub), ("Thuế:", var_tax),
                   ("Service:", var_srv), ("TỔNG CỘNG:", var_ttl)]
+        
+        # Layout 3 hàng x 2 cột (mỗi 2 items là 1 hàng)
         for i, (txt, var) in enumerate(labels):
-            ttk.Label(grid, text=txt).grid(row=i // 4, column=(i % 4) * 2, sticky="w", padx=4, pady=2)
-            ttk.Label(grid, textvariable=var).grid(row=i // 4, column=(i % 4) * 2 + 1, sticky="w", padx=4, pady=2)
+            row = i // 2  # Hàng: 0,0,1,1,2,2
+            col = (i % 2) * 2  # Cột: 0,2,0,2,0,2 (cột 0,1 cho item 1; cột 2,3 cho item 2)
+            lbl_font = ('Segoe UI', 9, 'bold') if txt == "TỔNG CỘNG:" else ('Segoe UI', 9)
+            ttk.Label(grid, text=txt, font=lbl_font).grid(row=row, column=col, sticky="w", padx=(4, 2), pady=2)
+            ttk.Label(grid, textvariable=var, font=lbl_font).grid(row=row, column=col+1, sticky="w", padx=(2, 20), pady=2)
 
         cols = ("order_id", "created_at", "table_id", "subtotal", "tax", "service", "total")
         tree_detail = ttk.Treeview(win, columns=cols, show="headings", height=14)
