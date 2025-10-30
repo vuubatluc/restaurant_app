@@ -1,4 +1,3 @@
-"""Main entry point for Restaurant Order Manager"""
 import mysql.connector
 from tkinter import messagebox
 from database import get_conn, get_server_conn, initialize_database
@@ -54,6 +53,29 @@ def main():
     if not check_and_init_database():
         return
     
+    print("                        _oo0oo_")
+    print("                       o8888888o")
+    print('                       88" . "88')
+    print("                       (| -_- |)")
+    print("                       0\\  =  /0")
+    print("                     ___/`---'\\___")
+    print("                   .' \\\\|     |// '.")
+    print("                  / \\\\|||  :  |||// \\")
+    print("                 / _||||| -:- |||||- \\")
+    print("                |   | \\\\\\  -  /// |   |")
+    print("                | \\_|  ''\\---/''  |_/ |")
+    print("                \\  .-\\__  '-'  ___/-. /")
+    print("              ___'. .'  /--.--\\  `. .'___")
+    print('           ."" \'<  `.___\\_<|>_/___.\' >\' "".')
+    print("          | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |")
+    print("          \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /")
+    print("      =====`-.____`.___ \\_____/___.-`___.-'=====")
+    print("                        `=---='")
+    print()
+    print("      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("             Phật phù hộ QUa môn")
+    print("      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
     # Import and run application
     from main_app import RestaurantApp
     app = RestaurantApp()

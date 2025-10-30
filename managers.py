@@ -138,7 +138,7 @@ class CategoryManager:
 
         def refresh():
             lst.delete(0, END)
-            rows = query_all("SELECT id, name FROM categories ORDER BY name")
+            rows = query_all("SELECT id, name FROM categories ORDER BY id")
             for _id, name in rows:
                 lst.insert(END, f"{_id}: {name}")
 
